@@ -86,14 +86,7 @@ return [
     'repositories' => [
         // add your repositories here  
         // 'repo-short-name' => RepositoryClassPath::class,
- 		 'contactuses' => App\Modules\ContactUs\Repositories\ContactUsRepository::class,
- 		 'contactuses' => App\Modules\ContactUs\Repositories\ContactUsRepository::class,
- 		 'contactuses' => App\Modules\ContactUs\Repositories\ContactUsRepository::class,
- 		 'contactuses' => App\Modules\ContactUs\Repositories\ContactUsRepository::class,
- 		 'newsletters' => App\Modules\Newsletters\Repositories\NewslettersRepository::class,
  		 'users' => App\Modules\Users\Repositories\UsersRepository::class,
- 		 'usersGroups' => App\Modules\Users\Repositories\UsersGroupsRepository::class,
- 		 'permissions' => App\Modules\Users\Repositories\PermissionsRepository::class,
  		 'settings' => App\Modules\Settings\Repositories\SettingsRepository::class,
  		 // Auto generated repositories here: DO NOT remove this line.   
     ],

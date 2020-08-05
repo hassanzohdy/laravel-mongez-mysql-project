@@ -51,26 +51,17 @@ class Auth
      */
     public function handle(Request $request, Closure $next)
     {
-        // pred($_SERVER);
-        $this->apiKey = config('app.api-key');
+        $this->apiKey = env('API_KEY');
 
         // set default auth
-        if (Str::contains($request->uri(), '/admin')) {
-            $this->appType = 'admin';
-        } else {
-            $this->appType = 'site';
-        }
-
-        $guardInfo = config('auth.guards.' . $this->appType);
-
+        $guardInfo = config('auth.guards.admin');
         config([
-            'auth.defaults.guard' => $this->appType,
-            'app.type' => $this->appType,
-            'app.users-repo' => $guardInfo['repository'] ?? 'users',
-            'app.user-type' => $guardInfo['repository'] ?? 'users',
+            'auth.defaults.guard' => 'admin',
+            'app.type' =>'admin',
+            'app.users-repo' => $guardInfo['repository'],
+            'app.user-type' => $guardInfo['repository'],
         ]);
-
-        return $this->middleware($request, $next);
+        return $this->middleware($request, $next); 
     }
 
     /**
@@ -79,7 +70,7 @@ class Auth
     protected function middleware(Request $request, Closure $next)
     {
         $ignoredRoutes = $this->appType == 'admin' ? $this->ignoredAdminRoutes : $this->ignoredSiteRoutes;
-
+        
         if (in_array($request->uri(), $ignoredRoutes)) {
             if ($request->authorizationValue() !== $this->apiKey) {
                 return response([

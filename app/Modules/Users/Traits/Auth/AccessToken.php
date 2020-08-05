@@ -15,9 +15,9 @@ trait AccessToken
      * @return string
      */
     public function generateAccessToken($user, $request)
-    {        
+    {    
         $accessToken = Str::random(96);
-
+        
         $userTokenModel = new UserToken;
 
         $userTokenModel->user_id = $user->id;

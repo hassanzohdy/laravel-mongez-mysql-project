@@ -27,7 +27,7 @@ class LoginController extends ApiController
                 $user = user();
 
                 $usersRepository = $this->{config('app.users-repo')};
-
+                
                 $accessToken = $usersRepository->generateAccessToken($user, $request);
 
                 $userInfo = $usersRepository->wrap($user)->toArray($request);

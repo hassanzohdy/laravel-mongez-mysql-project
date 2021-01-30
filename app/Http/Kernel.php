@@ -2,7 +2,15 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\Authenticate;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
+
+use App\Http\BloodyCors;
+use App\Modules\Users\Middleware\{
+    Auth,
+    Authenticated,
+    Authorized
+};
 
 class Kernel extends HttpKernel
 {
@@ -39,10 +47,11 @@ class Kernel extends HttpKernel
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
-
         'api' => [
+            BloodyCors::class,
             'throttle:60,1',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
+            Auth::class
         ],
     ];
 
@@ -54,6 +63,8 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $routeMiddleware = [
+        'Authenticated' => Authenticated::class, 
+        'Authorized' => Authorized::class,
         'auth' => \App\Http\Middleware\Authenticate::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,

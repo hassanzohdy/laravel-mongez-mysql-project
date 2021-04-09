@@ -1,5 +1,7 @@
 {
     "installed": true,
     "modules": [
+        "movies",
+        "genres"
     ]
 }

@@ -17,3 +17,10 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+use App\Services\Movies\Movies;
+Route::get('/test', function() {
+    $movies =  new Movies;
+    $data = $movies->fetch('topRated');
+    return $data->results;
+});

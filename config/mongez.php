@@ -87,6 +87,8 @@ return [
         // add your repositories here  
         // 'repo-short-name' => RepositoryClassPath::class,
         'products' => App\Modules\Products\Repositories\ProductsRepository::class,
+ 		 'movies' => App\Modules\Movies\Repositories\MoviesRepository::class,
+ 		 'genres' => App\Modules\Movies\Repositories\GenresRepository::class,
  		 // Auto generated repositories here: DO NOT remove this line.   
     ],
 

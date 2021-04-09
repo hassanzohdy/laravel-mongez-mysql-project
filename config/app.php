@@ -178,6 +178,7 @@ return [
 		/** 
 		 * Modules Service Providers...
 		 */
+ 		App\Modules\Movies\Providers\MovieServiceProvider::class,
  		// Auto generated providers here: DO NOT remove this line.
 
 
